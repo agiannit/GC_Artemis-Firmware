@@ -45,10 +45,10 @@ void syncTask(void* arg) {
                 for(int i = 0; i < 20; ++i) {
                     time_t now;
                     time(&now);
-                    if(now > 1700000000) {
+                    if(now > 1700000000 && esp_sntp_get_sync_status() == SNTP_SYNC_STATUS_COMPLETED) {
                         tm local{};
                         localtime_r(&now, &local);
-                        clock->setTime(local);
+                        // Time service uses mktime() on RTC wall time and gmtime() for display.\n                        // Restore UTC before writing so its conversion does not shift the clock.\n                        setenv("TZ", "UTC0", 1);\n                        tzset();\n                        clock->setTime(local);
                         ESP_LOGI("NTP", "RTC synchronized");
                         success = true;
                         break;
