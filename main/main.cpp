@@ -29,6 +29,7 @@
 #include "Services/BacklightBrightness.h"
 #include "Services/ChirpSystem.h"
 #include "Services/Time.h"
+void startNTPTimeSync(Time* clock);
 #include "Services/StatusCenter.h"
 #include "Services/SleepMan.h"
 #include "Screens/ShutdownScreen.h"
@@ -166,6 +167,7 @@ void init(){
 	auto rtc = new RTC(*i2c);
 	auto time = new Time(*rtc);
 	Services.set(Service::Time, time); // Time service is required as soon as Phone is up
+	startNTPTimeSync(time);
 
 	auto bt = new Bluetooth();
 	auto gap = new BLE::GAP();
