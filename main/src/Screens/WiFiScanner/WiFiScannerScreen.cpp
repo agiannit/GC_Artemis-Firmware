@@ -49,14 +49,19 @@ WiFiScannerScreen::WiFiScannerScreen() : events(6) {
         lv_obj_set_style_text_color(values[i], lv_color_white(), 0);
         lv_label_set_text(values[i], "");
 
-        bars[i] = lv_obj_create(*this);
-        lv_obj_set_pos(bars[i], 3, y + 15);
-        lv_obj_set_size(bars[i], 2, 5);
-        lv_obj_set_style_radius(bars[i], 0, 0);
-        lv_obj_set_style_border_width(bars[i], 0, 0);
-        lv_obj_set_style_pad_all(bars[i], 0, 0);
-        lv_obj_set_style_bg_color(bars[i], lv_color_make(32, 220, 85), 0);
-        lv_obj_clear_flag(bars[i], LV_OBJ_FLAG_SCROLLABLE);
+        bars[i] = lv_bar_create(*this);
+        lv_obj_set_pos(bars[i], 3, y + 14);
+        lv_obj_set_size(bars[i], 120, 7);
+        lv_bar_set_range(bars[i], 0, 100);
+        lv_bar_set_value(bars[i], 0, LV_ANIM_OFF);
+        lv_obj_set_style_bg_opa(bars[i], LV_OPA_COVER, LV_PART_MAIN);
+        lv_obj_set_style_bg_color(bars[i], lv_color_make(32, 43, 55), LV_PART_MAIN);
+        lv_obj_set_style_bg_opa(bars[i], LV_OPA_COVER, LV_PART_INDICATOR);
+        lv_obj_set_style_bg_color(bars[i], lv_color_make(32, 220, 85), LV_PART_INDICATOR);
+        lv_obj_set_style_radius(bars[i], 0, LV_PART_MAIN);
+        lv_obj_set_style_radius(bars[i], 0, LV_PART_INDICATOR);
+        lv_obj_set_style_border_width(bars[i], 0, LV_PART_MAIN);
+        lv_obj_set_style_pad_all(bars[i], 0, LV_PART_MAIN);
     }
 }
 
@@ -117,8 +122,8 @@ void WiFiScannerScreen::draw() {
         lv_label_set_text_fmt(names[i], "%c%.12s", index == selected ? '>' : ' ', name.c_str());
         lv_label_set_text_fmt(values[i], "%d", (int)ap.rssi);
         lv_obj_set_style_text_color(values[i], signalColour(ap.rssi), 0);
-        lv_obj_set_size(bars[i], strength(ap.rssi), 5);
-        lv_obj_set_style_bg_color(bars[i], signalColour(ap.rssi), 0);
+        lv_bar_set_value(bars[i], strength(ap.rssi), LV_ANIM_OFF);
+        lv_obj_set_style_bg_color(bars[i], signalColour(ap.rssi), LV_PART_INDICATOR);
         lv_obj_clear_flag(bars[i], LV_OBJ_FLAG_HIDDEN);
     }
 }
