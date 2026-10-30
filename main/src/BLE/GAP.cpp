@@ -1,4 +1,5 @@
 #include "GAP.h"
+#include "Screens/BLEScanner/BLEScanService.h"
 #include "Client.h"
 #include "Server.h"
 #include "ConMan.h"
@@ -18,6 +19,7 @@ BLE::GAP::GAP(){
 	esp_ble_gap_register_callback([](esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t* param){
 		if(self == nullptr) return;
 		self->ble_GAP_cb(event, param);
+        BLEScanService::onGapEvent(event, param);
 	});
 
 	esp_ble_gap_set_device_name("Artemis Watch"); // TOD: somewhere else, doesn't update the device name when discovering on phone-
