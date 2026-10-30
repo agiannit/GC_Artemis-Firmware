@@ -19,10 +19,8 @@ HackerModeScreen::HackerModeScreen() : events(8) {
     lv_obj_clear_flag(*this, LV_OBJ_FLAG_SCROLLABLE);
     for(size_t i = 0; i < columns.size(); ++i) {
         columns[i] = lv_label_create(*this);
-        lv_obj_set_pos(columns[i], static_cast<lv_coord_t>(i * 8), 0);
+        lv_obj_set_pos(columns[i], static_cast<lv_coord_t>(i * 10), 0);
         lv_obj_set_style_text_color(columns[i], lv_color_make(0, 200, 55), 0);
-        lv_obj_set_style_text_font(columns[i], LV_FONT_DEFAULT, 0);
-        lv_obj_set_style_text_line_space(columns[i], 0, 0);
         lv_label_set_text(columns[i], "");
         offsets[i] = static_cast<uint8_t>(esp_random() % 10);
     }
@@ -50,14 +48,14 @@ void HackerModeScreen::render() {
     for(size_t i = 0; i < columns.size(); ++i) {
         char text[40]{};
         size_t p = 0;
-        for(int row = 0; row < 13; ++row) {
+        for(int row = 0; row < 11; ++row) {
             const int distance = (static_cast<int>(offsets[i]) - row + 18) % 18;
             if(distance < 8) {
                 text[p++] = Glyphs[esp_random() % (sizeof(Glyphs) - 1)];
             } else {
                 text[p++] = ' ';
             }
-            if(row != 12) text[p++] = '\n';
+            if(row != 10) text[p++] = '\n';
         }
         text[p] = '\0';
         lv_label_set_text(columns[i], text);
