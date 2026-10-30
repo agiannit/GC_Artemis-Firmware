@@ -4,6 +4,8 @@
 #include "Util/Events.h"
 #include "WiFiScanService.h"
 #include <vector>
+#include <array>
+#include <cstdint>
 
 class WiFiScannerScreen : public LVScreen {
 public:
@@ -21,7 +23,12 @@ private:
     std::vector<WiFiScanService::APEntry> aps;
     lv_obj_t* title = nullptr;
     lv_obj_t* status = nullptr;
-    lv_obj_t* detail = nullptr;
+    static constexpr int VisibleRows = 4;
+    std::array<lv_obj_t*, VisibleRows> names{};
+    std::array<lv_obj_t*, VisibleRows> bars{};
+    std::array<lv_obj_t*, VisibleRows> values{};
+    uint64_t lastScanUs = 0;
     int selected = 0;
     bool scanning = false;
+    bool ready = false;
 };
