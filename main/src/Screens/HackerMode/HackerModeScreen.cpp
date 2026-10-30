@@ -21,7 +21,7 @@ HackerModeScreen::HackerModeScreen() : events(8) {
         columns[i] = lv_label_create(*this);
         lv_obj_set_pos(columns[i], static_cast<lv_coord_t>(i * 8), 0);
         lv_obj_set_style_text_color(columns[i], lv_color_make(0, 200, 55), 0);
-        lv_obj_set_style_text_font(columns[i], &lv_font_montserrat_10, 0);
+        lv_obj_set_style_text_font(columns[i], LV_FONT_DEFAULT, 0);
         lv_obj_set_style_text_line_space(columns[i], 0, 0);
         lv_label_set_text(columns[i], "");
         offsets[i] = static_cast<uint8_t>(esp_random() % 10);
