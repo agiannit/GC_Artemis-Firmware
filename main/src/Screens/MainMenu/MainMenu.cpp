@@ -9,6 +9,7 @@
 #include "Screens/WiFiScanner/WiFiScannerScreen.h"
 #include "Screens/HackerMode/HackerModeScreen.h"
 #include "Screens/BLEScanner/BLEScannerScreen.h"
+#include "Screens/FlightRadar/FlightRadarScreen.h"
 #include "Util/stdafx.h"
 #include "LV_Interface/InputLVGL.h"
 #include "Screens/Lander/LunarLander.h"
@@ -142,6 +143,7 @@ void MainMenu::setupItemPaths(Theme theme){
 	ItemInfos[7].iconPath = THEMED_FILE(Menu, Connection, theme);
 	ItemInfos[8].iconPath = THEMED_FILE(Menu, Connection, theme);
     ItemInfos[9].iconPath = THEMED_FILE(Menu, Connection, theme);
+    ItemInfos[10].iconPath = THEMED_FILE(Menu, Connection, theme);
 }
 
 void MainMenu::resetMenuIndex(){
@@ -220,7 +222,8 @@ void MainMenu::onClick(){
 			[this](){ transition([](){ return std::make_unique<SettingsScreen>(); }); },
 			[this](){ transition([](){ return std::make_unique<WiFiScannerScreen>(); }); },
 			[this](){ transition([](){ return std::make_unique<HackerModeScreen>(); }); },
-            [this](){ transition([](){ return std::make_unique<BLEScannerScreen>(); }); }
+            [this](){ transition([](){ return std::make_unique<BLEScannerScreen>(); }); },
+            [this](){ transition([](){ return std::make_unique<FlightRadarScreen>(); }); }
 	};
 
 	launcher[index]();
