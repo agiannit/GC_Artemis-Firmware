@@ -4,6 +4,7 @@
 #include "Util/Services.h"
 #include "LV_Interface/InputLVGL.h"
 #include "esp_system.h"
+#include "esp_random.h"
 #include "esp_timer.h"
 #include <cstdlib>
 #include <memory>
