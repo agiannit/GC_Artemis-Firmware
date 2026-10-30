@@ -15,8 +15,8 @@ private:
     void loop() override;
     void render();
     EventQueue events;
-    std::array<lv_obj_t*, 16> columns{};
-    std::array<uint8_t, 16> offsets{};
+    std::array<lv_obj_t*, 13> columns{};
+    std::array<uint8_t, 13> offsets{};
     uint64_t lastFrameUs = 0;
     bool amber = false;
 };
