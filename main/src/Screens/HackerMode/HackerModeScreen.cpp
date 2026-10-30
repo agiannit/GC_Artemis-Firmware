@@ -48,14 +48,14 @@ void HackerModeScreen::render() {
     for(size_t i = 0; i < columns.size(); ++i) {
         char text[40]{};
         size_t p = 0;
-        for(int row = 0; row < 11; ++row) {
+        for(int row = 0; row < 13; ++row) {
             const int distance = (static_cast<int>(offsets[i]) - row + 18) % 18;
             if(distance < 8) {
                 text[p++] = Glyphs[esp_random() % (sizeof(Glyphs) - 1)];
             } else {
                 text[p++] = ' ';
             }
-            if(row != 10) text[p++] = '\n';
+            if(row != 12) text[p++] = '\n';
         }
         text[p] = '\0';
         lv_label_set_text(columns[i], text);
