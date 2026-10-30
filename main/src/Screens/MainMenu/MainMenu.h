@@ -41,7 +41,7 @@ private:
 			{ "Rover control",	  nullptr,                                File::Menu::Theme1::Rover,   	  nullptr },
 			{ "Settings",         nullptr,                                File::Menu::Theme1::Settings,   nullptr },
 			{ "Wi-Fi scanner", nullptr, File::Menu::Theme1::Connection, nullptr },
-\t\t\t{ "Hacker mode", nullptr, File::Menu::Theme1::Connection, nullptr }
+            { "Hacker mode", nullptr, File::Menu::Theme1::Connection, nullptr }
 	};
 	static constexpr uint8_t ItemCount = sizeof(ItemInfos) / sizeof(ItemInfos[0]);
 	void setupItemPaths(Theme theme);
