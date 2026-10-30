@@ -32,7 +32,7 @@ private:
 		const char* iconPath = nullptr;
 		const char* iconAltPath = nullptr;
 	};
-	ItemInfo ItemInfos[10] = {
+	ItemInfo ItemInfos[11] = {
 			{ "Find my phone",    "Ringing phone...",                     File::Menu::Theme1::Find,       File::Menu::Theme1::Find },
 			{ "Lunar lander",	  nullptr,                  			  File::Menu::Theme1::Lunar, 	  nullptr },
 			{ "Level",            nullptr,                                File::Menu::Theme1::Level,      nullptr },
@@ -42,7 +42,8 @@ private:
 			{ "Settings",         nullptr,                                File::Menu::Theme1::Settings,   nullptr },
 			{ "Wi-Fi scanner", nullptr, File::Menu::Theme1::Connection, nullptr },
             { "Hacker mode", nullptr, File::Menu::Theme1::Connection, nullptr },
-            { "BLE scanner", nullptr, File::Menu::Theme1::Connection, nullptr }
+            { "BLE scanner", nullptr, File::Menu::Theme1::Connection, nullptr },
+            { "Flight radar", nullptr, File::Menu::Theme1::Connection, nullptr }
 	};
 	static constexpr uint8_t ItemCount = sizeof(ItemInfos) / sizeof(ItemInfos[0]);
 	void setupItemPaths(Theme theme);
